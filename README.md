@@ -3,4 +3,4 @@
 Name: PRUDENCIO, YHANNIS GEOSH O.
 Degree Program: BS Computer Science
 
-Key Takeaways: Learned that javascript is a flexible programming language. It is also quite simple, compared to languages like Java and C. I am looking forward to integrating this in my websites.
+Key Takeaways: Learned that javascript is a flexible programming language. It is also quite simple, compared to languages like Java and C. I am looking forward to integrating this in my websites. Implementing logic is quite challenging, but doable. 
