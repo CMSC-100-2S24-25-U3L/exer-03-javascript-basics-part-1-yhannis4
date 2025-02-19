@@ -1,20 +1,22 @@
-let pass1 = "abCDefgh"
-let pass2 = "abcde123"
+let pass1 = "abC12"
+let pass2 = "a123bbbbbb"
 
 
 function checkNum(pass){
 
     if(pass.length >= 8){
         console.log("This is a valid password with length" + " " + pass.length);
+        return true;
     } else{
         console.log("This is not a valid password.");
+        return false;
     }
 }
 
 function checkContent(pass){
-    let upperCount = 0;
-    let lowerCount = 0;
-    let digitCount = 0;
+    var upperCount = 0;
+    var lowerCount = 0;
+    var digitCount = 0;
 
     for(var i = 0; i < pass.length; i++){
         if(pass.charCodeAt(i) >= 65 && pass.charCodeAt(i) <= 90){
@@ -29,9 +31,51 @@ function checkContent(pass){
     }
 
     console.log("Upper count is: "+upperCount+"\nLower count is: "+lowerCount+"\nDigit count is: "+ digitCount);
+
+    if(upperCount >= 1 && lowerCount >= 1 && digitCount >= 1){
+        return true;
+    }
+    else {
+        return false;
+    }
 }
+
+function checkPass (pass){
+    
+    if(checkNum(pass) === true && checkContent(pass) == true){
+        console.log("This is a valid password.");
+        return true;
+    }
+    else if(checkNum(pass) === true && checkContent(pass) == false){
+        console.log("Invalid password. Please check if you have at least 1 Uppercase character, 1 Lowercase character, and 1 digit.");
+        return false;
+    }else if(checkNum(pass) === false && checkContent(pass) == true){
+        console.log("Requires a longer password length.");
+        return false;
+    } else{
+        console.log("Password is too short and/or lacks the required characters.");
+        return false;
+    }
+}
+
+function reverseString(string){
+    var newStr = "";
+
+    for(let i = string.length -1; i >= 0; i--){
+
+        newStr += string[i];
+    }    
+    console.log(newStr);
+    return newStr;
+}
+
+
+
 
 checkNum(pass1);
 checkContent(pass1);
 checkContent(pass2);
+
+checkPass(pass1);
+checkPass(pass2);
 
