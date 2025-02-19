@@ -1,5 +1,3 @@
-let pass1 = "abC12"
-let pass2 = "a123bbbbbb"
 
 
 function checkNum(pass){
@@ -40,10 +38,18 @@ function checkContent(pass){
     }
 }
 
-function checkPass (pass){
+function checkMatch(pass1, pass2){
+    if(pass1 == pass2){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function checkPass (pass, pass2){
     
-    if(checkNum(pass) === true && checkContent(pass) == true){
-        console.log("This is a valid password.");
+    if(checkNum(pass) === true && checkContent(pass) == true && checkMatch(pass,pass2)){
+        console.log("These are valid passwords.");
         return true;
     }
     else if(checkNum(pass) === true && checkContent(pass) == false){
@@ -51,8 +57,14 @@ function checkPass (pass){
         return false;
     }else if(checkNum(pass) === false && checkContent(pass) == true){
         console.log("Requires a longer password length.");
+        return false;    
+    } else if(checkMatch(pass, pass2)){
+        console.log("Passwords do not match.")
         return false;
-    } else{
+
+    }
+    
+    else{
         console.log("Password is too short and/or lacks the required characters.");
         return false;
     }
@@ -69,13 +81,27 @@ function reverseString(string){
     return newStr;
 }
 
+function storePassword(name, pass1, pass2){
+
+
+    const newObject = {
+        name:name,
+
+    }
+
+    if (checkPass(pass1,pass2)==true){
+        newObject.newPassword = reverseString(pass1);
+    }else{
+        newObject.newPassword = pass1;
+    }
+
+    console.log(newObject);
+    return newObject;
+ 
+
+}
 
 
 
-checkNum(pass1);
-checkContent(pass1);
-checkContent(pass2);
 
-checkPass(pass1);
-checkPass(pass2);
-
+storePassword("John", "Pass1234","Pass1234");
